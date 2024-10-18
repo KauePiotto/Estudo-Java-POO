@@ -63,19 +63,19 @@ public class FrameMarca extends JFrame {
 
 		txtId = new JTextField();
 		txtId.setEditable(false);
-		txtId.setBounds(45, 13, 75, 23);
+		txtId.setBounds(45, 11, 58, 25);
 		contentPane.add(txtId);
 		txtId.setColumns(10);
 
 		txtNome = new JTextField();
-		txtNome.setBounds(45, 49, 315, 23);
+		txtNome.setBounds(45, 49, 294, 23);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBackground(new Color(192, 192, 192));
 		lblLogo.setOpaque(true);
-		lblLogo.setBounds(370, 11, 54, 61);
+		lblLogo.setBounds(349, 11, 75, 75);
 		contentPane.add(lblLogo);
 
 		tblMarca = new JTable();
@@ -99,8 +99,7 @@ public class FrameMarca extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtNome.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(FrameMarca.this, "Informe o nome", "Aviso",
-							JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(FrameMarca.this, "Informe o nome", "Aviso",JOptionPane.INFORMATION_MESSAGE);
 					txtNome.requestFocus();
 				} else {
 					marca = new Marca();
