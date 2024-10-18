@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.senac.sp.projetopoo.dao.ConectionFactory;
 import br.senac.sp.projetopoo.modelo.Marca;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,6 +35,7 @@ public class FrameMarca extends JFrame {
 				try {
 					FrameMarca frame = new FrameMarca();
 					frame.setVisible(true);
+					ConectionFactory.getConexao();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
