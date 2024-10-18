@@ -1110,3 +1110,9 @@ Java Model Exception: Error in Java Model (code 969): prova001 does not exist
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2024-10-18 11:19:08.226
 !MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-10-18 11:21:04.661
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-10-18 11:21:04.662
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
