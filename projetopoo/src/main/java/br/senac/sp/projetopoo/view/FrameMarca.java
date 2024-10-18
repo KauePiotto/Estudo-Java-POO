@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import br.senac.sp.projetopoo.dao.ConectionFactory;
 import br.senac.sp.projetopoo.modelo.Marca;
 import javax.swing.JLabel;
