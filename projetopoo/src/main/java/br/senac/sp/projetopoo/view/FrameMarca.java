@@ -44,6 +44,7 @@ public class FrameMarca extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameMarca() {
+		setTitle("Cadastro Marca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -51,60 +52,74 @@ public class FrameMarca extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(10, 47, 75, 25);
 		contentPane.add(lblNome);
-		
+
 		JLabel lblId = new JLabel("ID:");
 		lblId.setBounds(10, 11, 75, 25);
 		contentPane.add(lblId);
-		
+
 		txtId = new JTextField();
 		txtId.setEditable(false);
 		txtId.setBounds(45, 13, 75, 23);
 		contentPane.add(txtId);
 		txtId.setColumns(10);
-		
+
 		txtNome = new JTextField();
 		txtNome.setBounds(45, 49, 315, 23);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
-		
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setMnemonic('e');
-		btnExcluir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnExcluir.setBounds(151, 97, 140, 34);
-		contentPane.add(btnExcluir);
-		
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.setMnemonic('l');
-		btnLimpar.setBounds(301, 97, 123, 34);
-		contentPane.add(btnLimpar);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBackground(new Color(192, 192, 192));
 		lblLogo.setOpaque(true);
 		lblLogo.setBounds(370, 11, 54, 61);
 		contentPane.add(lblLogo);
-		
+
 		tblMarca = new JTable();
 		tblMarca.setBounds(10, 142, 414, 108);
 		contentPane.add(tblMarca);
-		
+
+		// Botoes
+
+		// Botao Excluir
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnExcluir.setBounds(151, 97, 140, 34);
+		contentPane.add(btnExcluir);
+
+		// Botao Salvar
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtNome.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"Informe o nome","Aviso",JOptionPane.INFORMATION_MESSAGE);
+				if (txtNome.getText().trim().isEmpty()) {
+					JOptionPane.showMessageDialog(FrameMarca.this, "Informe o nome", "Aviso",
+							JOptionPane.INFORMATION_MESSAGE);
 					txtNome.requestFocus();
+				} else {
+					marca = new Marca();
+					marca.setNome(txtNome.getText().trim());
 				}
 			}
 		});
 		btnSalvar.setBounds(10, 97, 131, 34);
 		contentPane.add(btnSalvar);
+
+		// Botao Limpar
+		JButton btnLimpa = new JButton("Limpar");
+		btnLimpa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnLimpa.setBounds(301, 97, 123, 34);
+		contentPane.add(btnLimpa);
+
 	}
 }
