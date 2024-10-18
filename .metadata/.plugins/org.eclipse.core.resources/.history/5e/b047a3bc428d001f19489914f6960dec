@@ -1,0 +1,10 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public interface CadastroProduto {
+
+	void CadastrarProduto();
+
+	void AlterarProduto();
+}

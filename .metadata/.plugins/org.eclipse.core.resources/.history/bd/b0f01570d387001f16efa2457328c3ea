@@ -1,0 +1,119 @@
+package VendaProduto;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+public class Eletronico extends Produto implements CadastroProduto {
+	private String NumeroDeSerie;
+	private String Marca;
+	private String Modelo;
+	private String Condicao;
+	private Garantia garantia;
+
+	ArrayList<Eletronico> eletroCadastrados = new ArrayList<>();
+
+	public Eletronico() {
+
+	}
+
+	public Eletronico(String codigo, String nome, double preco, String numeroDeSerie, String marca,
+			String modelo, String condicao, Garantia garantia) {
+		super(codigo, nome, preco);
+		this.NumeroDeSerie = numeroDeSerie;
+		this.Valor = preco;
+		this.Marca = marca;
+		this.Modelo = modelo;
+		this.Condicao = condicao;
+		this.garantia = garantia;
+	}
+
+	public String getNumeroDeSerie() {
+		return NumeroDeSerie;
+	}
+
+	public void setNumeroDeSerie(String numeroDeSerie) {
+		NumeroDeSerie = numeroDeSerie;
+	}
+
+	public int getValor() {
+		return Valor;
+	}
+
+	public void setValor(int valor) {
+		Valor = valor;
+	}
+
+	public String getMarca() {
+		return Marca;
+	}
+
+	public void setMarca(String marca) {
+		Marca = marca;
+	}
+
+	public String getModelo() {
+		return Modelo;
+	}
+
+	public void setModelo(String modelo) {
+		Modelo = modelo;
+	}
+
+	public String getCondicao() {
+		return Condicao;
+	}
+
+	public void setCondicao(String condicao) {
+		Condicao = condicao;
+	}
+
+	public Garantia getGarantia() {
+		return garantia;
+	}
+
+	public void setGarantia(Garantia garantia) {
+		this.garantia = garantia;
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		eletroCadastrados.add(this);
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso: " + this);
+	}
+
+	@Override
+	public void AlterarProduto() {
+		JOptionPane.showInputDialog("Alterar Produto: ");
+		this.Modelo = JOptionPane.showInputDialog("Digite o modelo");
+		this.Marca = JOptionPane.showInputDialog("Digite a marca");
+		this.Condicao = JOptionPane.showInputDialog("Digite a condição");
+		this.Valor = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor"));
+		JOptionPane.showMessageDialog(null, "Produto alterado com sucesso" + this);
+	}
+
+	private void cadastrarEletronico() {
+		String Codigo, Nome, NumeroDeSerie, Marca, Modelo, Garantia, Condicao;
+		double Preco;
+
+		JOptionPane.showMessageDialog(null, "Cadastro de Eletrônico:");
+
+		Codigo = JOptionPane.showInputDialog("Código: ");
+		Nome = JOptionPane.showInputDialog("Nome: ");
+		Preco = Double.parseDouble(JOptionPane.showInputDialog("Preço: "));
+		NumeroDeSerie = JOptionPane.showInputDialog("Numero De Serie: ");
+		Marca = JOptionPane.showInputDialog("Marca: ");
+		Modelo = JOptionPane.showInputDialog("Modelo");
+		Condicao = JOptionPane.showInputDialog("Condição");
+
+		Garantia garantia = new Garantia("15/12/2025", "Válida");
+		Eletronico eletronico = new Eletronico(Codigo, Nome, Preco, NumeroDeSerie, Marca, Modelo, Condicao, garantia);
+		eletronico.CadastrarProduto();
+	}
+	
+	@Override
+	public String toString() {
+		return "Eletronico [NumeroDeSerie=" + NumeroDeSerie + ", Valor=" + Valor + ", Marca=" + Marca + ", Modelo="
+				+ Modelo + ", Condicao=" + Condicao + ", garantia=" + garantia + ", eletroCadastrados="
+				+ eletroCadastrados + "]";
+	}
+}

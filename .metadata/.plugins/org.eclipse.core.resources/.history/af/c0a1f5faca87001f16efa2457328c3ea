@@ -1,0 +1,94 @@
+package VendaProduto;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+public class Eletronico extends Produto implements CadastroProduto {
+	private String NumeroDeSerie;
+	private String Valor;
+	private String Marca;
+	private String Modelo;
+	private String Condicao;
+	private Garantia garantia;
+
+	List<Eletronico> eletroCadastrados = new ArrayList<>();
+
+	public Eletronico() {
+
+	}
+
+	public Eletronico(String numeroDeSerie, String valor, String marca, String modelo, String condicao, Garantia garantia) {
+		super();
+		NumeroDeSerie = numeroDeSerie;
+		Valor = valor;
+		Marca = marca;
+		Modelo = modelo;
+		Condicao = condicao;
+		this.garantia = garantia;
+	}
+
+	public String getNumeroDeSerie() {
+		return NumeroDeSerie;
+	}
+
+	public void setNumeroDeSerie(String numeroDeSerie) {
+		NumeroDeSerie = numeroDeSerie;
+	}
+
+	public String getValor() {
+		return Valor;
+	}
+
+	public void setValor(String valor) {
+		Valor = valor;
+	}
+
+	public String getMarca() {
+		return Marca;
+	}
+
+	public void setMarca(String marca) {
+		Marca = marca;
+	}
+
+	public String getModelo() {
+		return Modelo;
+	}
+
+	public void setModelo(String modelo) {
+		Modelo = modelo;
+	}
+
+	public String getCondicao() {
+		return Condicao;
+	}
+
+	public void setCondicao(String condicao) {
+		Condicao = condicao;
+	}
+
+	public Garantia getGarantia() {
+		return garantia;
+	}
+
+	public void setGarantia(Garantia garantia) {
+		this.garantia = garantia;
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		eletroCadastrados.add(this);
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso: " + this);
+	}
+
+	@Override
+	public void AlterarProduto() {
+		JOptionPane.showInputDialog("Alterar Produto: ");
+		this.Modelo = "Novo Modelo"; 
+		this.Marca = "Nova Marca"; 
+		this.Valor = "Novo Valor";
+		this.Condicao = "Nova Condição"
+		JOptionPane.showMessageDialog(null,"Produto alterado com sucesso" + this);
+	}
+}

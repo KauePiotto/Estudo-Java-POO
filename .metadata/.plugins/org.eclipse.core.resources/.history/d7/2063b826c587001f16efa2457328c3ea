@@ -1,0 +1,15 @@
+package VendaProduto;
+
+public class TesteProduto {
+	private String codigo;
+	private String nome;
+	private double preco;
+
+	public void CadastrarProduto() {
+
+	}
+
+	public void AlterarProduto() {
+
+	}
+}

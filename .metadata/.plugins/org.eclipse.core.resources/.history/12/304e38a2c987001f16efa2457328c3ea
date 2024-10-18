@@ -1,0 +1,47 @@
+package VendaProduto;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+public class Smartphone extends Produto implements CadastroProduto {
+	private String memoria;
+	private Cor cor;
+
+	 List<Eletronico> eletrônicosCadastrados = new ArrayList<>();
+
+	public String getMemoria() {
+		return memoria;
+	}
+
+	public void setMemoria(String memoria) {
+		this.memoria = memoria;
+	}
+
+	public Cor getCor() {
+		return cor;
+	}
+
+	public void setCor(Cor cor) {
+		this.cor = cor;
+	}
+
+	@Override
+	public String toString() {
+		return "Smartphone [memoria=" + memoria + ", cor=" + cor + "]";
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		eletrônicosCadastrados.add(this);
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso: " + this);
+
+	}
+
+	@Override
+	public void AlterarProduto() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

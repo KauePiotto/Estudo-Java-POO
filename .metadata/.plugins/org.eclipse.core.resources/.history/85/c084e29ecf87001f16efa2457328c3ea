@@ -1,0 +1,33 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public class TesteProduto {
+	public static void main(String[] args) {
+
+		int opcao;
+		do {
+			opcao = Integer.parseInt(JOptionPane
+					.showInputDialog("Escolha uma opção:\n" + "				+ \"1 - Cadastrar Eletrônico\\n\""
+							+ "					+ \"2 - Cadastrar Smarphone\\n\""
+							+ "					+ \"3 - Alterar Eletrônico\\n\""
+							+ "					+ \"4 - Alterar Smarphone\\n\"" + "5 - Sair\""));
+
+			switch (opcao) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				breal;
+			case 5:
+				JOptionPane.showMessageDialog(null, "Saindo...");
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opção inválida, escolha uma das opções acima.");
+			}
+		} while (true);
+	}
+}

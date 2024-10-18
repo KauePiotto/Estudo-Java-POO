@@ -1,0 +1,39 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public interface CadastroProduto {
+
+	void CadastrarProduto();
+
+	void AlterarProduto();
+
+	private void cadastrarEletronico() {
+		String codigo, nome, numeroDeSerie, marca, modelo, garantia,condicao;
+		int valor;
+		double preco;
+		
+		JOptionPane.showMessageDialog(null,"Cadastro de Eletrônico:");
+		
+		codigo = JOptionPane.showInputDialog("Código: ");
+		nome = JOptionPane.showInputDialog("Nome: ");
+
+		System.out.print("Nome: ");
+
+		System.out.print("Preço: ");
+
+		System.out.print("Número de Série: ");
+
+		System.out.print("Valor: ");
+
+		System.out.print("Marca: ");
+
+		System.out.print("Modelo: ");
+
+		System.out.print("Condição: ");
+
+		Garantia garantia = new Garantia("15/12/2025", "Válida");
+        Eletronico eletronico = new Eletronico(codigo, nome, preco, numeroDeSerie, valor, marca, modelo, condicao, garantia);
+        eletronico.CadastrarProduto();
+	}
+}

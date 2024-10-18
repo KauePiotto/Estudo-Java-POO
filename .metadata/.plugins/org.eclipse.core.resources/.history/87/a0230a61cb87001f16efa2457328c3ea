@@ -1,0 +1,62 @@
+package VendaProduto;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class Garantia implements CadastroProduto {
+	private String DataDeVencimento;
+	private String Status;
+
+	public Garantia() {
+
+	}
+
+	public Garantia(String dataDeVencimento, String status) {
+		DataDeVencimento = dataDeVencimento;
+		Status = status;
+	}
+
+	public String getDataDeVencimento() {
+		return DataDeVencimento;
+	}
+
+	public void setDataDeVencimento(String dataDeVencimento) {
+		DataDeVencimento = dataDeVencimento;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	public void validarValidade() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		try {
+			LocalDate dataVencimento = LocalDate.parse(dataDeVencimento, formatter);
+			LocalDate dataAtual = LocalDate.now();
+			if (dataVencimento.isBefore(dataAtual)) {
+				status = "Vencida";
+			} else {
+				status = "Válida";
+			}
+		} catch (DateTimeParseException e) {
+			status = "Data Inválida";
+		}
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void AlterarProduto() {
+		// TODO Auto-generated method stub
+
+	}
+}

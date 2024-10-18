@@ -1,0 +1,5 @@
+package VendaProduto.copy;
+
+public enum Cor {
+	Preto, branco, prata, azul, vermelho;
+}

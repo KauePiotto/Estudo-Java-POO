@@ -1,0 +1,104 @@
+package VendaProduto;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+public class Eletronico extends Produto implements CadastroProduto {
+	private String NumeroDeSerie;
+	private int Valor;
+	private String Marca;
+	private String Modelo;
+	private String Condicao;
+	private Garantia garantia;
+
+	ArrayList<Eletronico> eletroCadastrados = new ArrayList<>();
+
+	public Eletronico() {
+
+	}
+
+	public Eletronico(String codigo, String nome, double preco, int Valor, String numeroDeSerie, String marca,
+			String modelo, String condicao, Garantia garantia) {
+		super(codigo, nome, preco);
+		this.NumeroDeSerie = numeroDeSerie;
+		this.Valor = Valor;
+		this.Marca = marca;
+		this.Modelo = modelo;
+		this.Condicao = condicao;
+		this.garantia = garantia;
+	}
+
+	public String getNumeroDeSerie() {
+		return NumeroDeSerie;
+	}
+
+	public void setNumeroDeSerie(String numeroDeSerie) {
+		NumeroDeSerie = numeroDeSerie;
+	}
+
+	public int getValor() {
+		return Valor;
+	}
+
+	public void setValor(int valor) {
+		Valor = valor;
+	}
+
+	public String getMarca() {
+		return Marca;
+	}
+
+	public void setMarca(String marca) {
+		Marca = marca;
+	}
+
+	public String getModelo() {
+		return Modelo;
+	}
+
+	public void setModelo(String modelo) {
+		Modelo = modelo;
+	}
+
+	public String getCondicao() {
+		return Condicao;
+	}
+
+	public void setCondicao(String condicao) {
+		Condicao = condicao;
+	}
+
+	public Garantia getGarantia() {
+		return garantia;
+	}
+
+	public void setGarantia(Garantia garantia) {
+		this.garantia = garantia;
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		eletroCadastrados.add(this);
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso: " + this);
+	}
+
+	@Override
+	public void AlterarProduto() {
+		String NModelo, NMarca, NValor,NCondicao;
+		JOptionPane.showInputDialog("Alterar Produto: ");
+		NModelo = JOptionPane.showInputDialog("Digite o modelo");		
+		NMarca = JOptionPane.showInputDialog("Digite a marca");
+		NCondicao = JOptionPane.showInputDialog("Digite a condição");
+		NValor = JOptionPane.showInputDialog("Digite o valor");
+		this.Valor = ("R$" + 1500);
+		this.Condicao = "Nova Condição";
+		JOptionPane.showMessageDialog(null, "Produto alterado com sucesso" + this);
+	}
+
+	@Override
+	public String toString() {
+		return "Eletronico [NumeroDeSerie=" + NumeroDeSerie + ", Valor=" + Valor + ", Marca=" + Marca + ", Modelo="
+				+ Modelo + ", Condicao=" + Condicao + ", garantia=" + garantia + ", eletroCadastrados="
+				+ eletroCadastrados + "]";
+	}
+}

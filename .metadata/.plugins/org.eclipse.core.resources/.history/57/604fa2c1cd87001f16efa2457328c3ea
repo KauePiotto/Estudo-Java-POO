@@ -1,0 +1,8 @@
+package VendaProduto;
+
+public class TesteProduto {
+
+	do {
+	
+       }while(true);
+}

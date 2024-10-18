@@ -1,0 +1,70 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public class TesteProduto {
+	public static void main(String[] args) {
+		int opcao;
+		do {
+			opcao = Integer.parseInt(JOptionPane
+					.showInputDialog("Escolha uma opção:\n" + "				+ \"1 - Cadastrar Eletrônico\\n\""
+							+ "					+ \"2 - Cadastrar Smarphone\\n\""
+							+ "					+ \"3 - Alterar Eletrônico\\n\""
+							+ "5 - Sair\""));
+
+			switch (opcao) {
+			case 1:
+				CadastrarEletronico();
+				break;
+			case 2:
+				alterarEletronico()
+				break;
+			case 3:
+				cadastrarSmartphone();
+				break;
+			case 4:
+				JOptionPane.showMessageDialog(null, "Saindo...");
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opção inválida, escolha uma das opções acima.");
+			}
+		} while (opcao != 5);
+	}
+
+	private static void CadastrarEletronico() {
+		String Codigo, Nome, NumeroDeSerie, Marca, Modelo, Garantia, Condicao;
+		double Preco;
+
+		JOptionPane.showMessageDialog(null, "Cadastro de Eletrônico:");
+
+		Codigo = JOptionPane.showInputDialog("Código: ");
+		Nome = JOptionPane.showInputDialog("Nome: ");
+		Preco = Double.parseDouble(JOptionPane.showInputDialog("Preço: "));
+		NumeroDeSerie = JOptionPane.showInputDialog("Numero De Serie: ");
+		Marca = JOptionPane.showInputDialog("Marca: ");
+		Modelo = JOptionPane.showInputDialog("Modelo");
+		Condicao = JOptionPane.showInputDialog("Condição");
+
+		Garantia garantia = new Garantia("15/12/2025", "Válida");
+		Eletronico eletronico = new Eletronico(Codigo, Nome, Preco, NumeroDeSerie, Marca, Modelo, Condicao, garantia);
+		eletronico.CadastrarProduto();
+	}
+	private STATIC void cadastrarEletronico() {
+		String Codigo, Nome, NumeroDeSerie, Marca, Modelo, Garantia, Condicao;
+		double Preco;
+
+		JOptionPane.showMessageDialog(null, "Cadastro de Eletrônico:");
+
+		Codigo = JOptionPane.showInputDialog("Código: ");
+		Nome = JOptionPane.showInputDialog("Nome: ");
+		Preco = Double.parseDouble(JOptionPane.showInputDialog("Preço: "));
+		NumeroDeSerie = JOptionPane.showInputDialog("Numero De Serie: ");
+		Marca = JOptionPane.showInputDialog("Marca: ");
+		Modelo = JOptionPane.showInputDialog("Modelo");
+		Condicao = JOptionPane.showInputDialog("Condição");
+
+		Garantia garantia = new Garantia("15/12/2025", "Válida");
+		Eletronico eletronico = new Eletronico(Codigo, Nome, Preco, NumeroDeSerie, Marca, Modelo, Condicao, garantia);
+		eletronico.CadastrarProduto();
+	}
+}

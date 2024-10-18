@@ -1,0 +1,7 @@
+package VendaProduto;
+
+public interface CadastroProduto {
+	
+	void CadastrarProduto();
+	void AlterarProduto();
+}

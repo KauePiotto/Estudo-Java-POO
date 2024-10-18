@@ -1,0 +1,35 @@
+package VendaProduto;
+
+public interface CadastroProduto {
+	
+	void CadastrarProduto();
+	void AlterarProduto();
+	
+	 private  void cadastrarEletronico() {
+		 String codigo,nome,numeroDeSerie,marca,modelo,garantia;
+		 double preco;
+		 Garantia garantia;
+	        System.out.println("Cadastro de Eletrônico:");
+	        System.out.print("Código: ");
+	        
+	        System.out.print("Nome: ");
+	         
+	        System.out.print("Preço: ");
+	       
+	        System.out.print("Número de Série: ");
+	      
+	        System.out.print("Valor: ");
+	       
+	        //scanner.nextLine(); // Consumir a nova linha
+	        System.out.print("Marca: ");
+	      
+	        System.out.print("Modelo: ");
+	       
+	        System.out.print("Condição: ");
+	        
+	        
+	        Garantia garantia = new Garantia("15/12/2025", "Válida");
+	        Eletronico eletronico = new Eletronico(codigo, nome, preco, numeroDeSerie, valor, marca, modelo, condicao, garantia);
+	        eletronico.CadastrarProduto();
+	    }
+}

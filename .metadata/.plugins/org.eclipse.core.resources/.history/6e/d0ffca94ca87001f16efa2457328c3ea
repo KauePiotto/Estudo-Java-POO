@@ -1,0 +1,48 @@
+package VendaProduto;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class Garantia extends Produto implements CadastroProduto {
+	private String DataDeVencimento;
+	private String Status;
+
+	public Garantia() {
+
+	}
+
+	public Garantia(String dataDeVencimento, String status) {
+		super();
+		DataDeVencimento = dataDeVencimento;
+		Status = status;
+	}
+
+	public String getDataDeVencimento() {
+		return DataDeVencimento;
+	}
+
+	public void setDataDeVencimento(String dataDeVencimento) {
+		DataDeVencimento = dataDeVencimento;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	@Override
+	public void CadastrarProduto() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void AlterarProduto() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,17 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public class TesteProduto {
+	public static void main(String[] args) {
+		int opcao;
+		do {
+		opcao = JOptionPane.showInputDialog(null,"Escolha uma opção:\n"
+					+ "1 - Cadastrar Eletrônico\n"
+					+ "2 - Cadastrar Smarphone\n"
+					+ "3 - Alterar Eletrônico\n"
+					+ "4 - Alterar Smarphone\n"
+					+ "5 - Sair");
+		}while(true);
+	}
+}

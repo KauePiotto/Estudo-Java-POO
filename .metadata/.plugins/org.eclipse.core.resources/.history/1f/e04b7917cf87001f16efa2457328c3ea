@@ -1,0 +1,26 @@
+package VendaProduto;
+
+import javax.swing.JOptionPane;
+
+public class TesteProduto {
+	public static void main(String[] args) {
+		int opcao;
+		do {
+		opcao = Integer.parseInt(JOptionPane.showInputDialog("Escolha uma opção:\\n\"\r\n"
+				+ "					+ \"1 - Cadastrar Eletrônico\\n\"\r\n"
+				+ "					+ \"2 - Cadastrar Smarphone\\n\"\r\n"
+				+ "					+ \"3 - Alterar Eletrônico\\n\"\r\n"
+				+ "					+ \"4 - Alterar Smarphone\\n\"\r\n"
+				+ "					+ \"5 - Sair\""));
+		
+		switch (opcao) {
+		case value:
+			
+			break;
+
+		default:
+			break;
+		}
+		}while(true);
+	}
+}

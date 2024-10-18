@@ -1,0 +1,47 @@
+package VendaProduto;
+
+public class Smartphone extends Produto implements CadastroProduto {
+	private String memoria;
+	private Cor cor;
+
+	
+	public String getMemoria() {
+		return memoria;
+	}
+
+
+	public void setMemoria(String memoria) {
+		this.memoria = memoria;
+	}
+
+
+	public Cor getCor() {
+		return cor;
+	}
+
+
+	public void setCor(Cor cor) {
+		this.cor = cor;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Smartphone [memoria=" + memoria + ", cor=" + cor + "]";
+	}
+
+
+	@Override
+	public void CadastrarProduto() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void AlterarProduto() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
