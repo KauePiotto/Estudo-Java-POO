@@ -2389,3 +2389,7 @@ org.eclipse.jdt.core.JavaModelException: prova001 does not exist
 2024-11-01 11:10:24,801 [Worker-148: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\kaue.plfreire\Desktop\Estudo-Java-POO\projetopoo\src\main\resources
 2024-11-01 11:10:24,802 [Worker-148: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2024-11-01 11:10:24,803 [Worker-148: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\kaue.plfreire\Desktop\Estudo-Java-POO\projetopoo\src\test\resources
+2024-11-01 11:12:19,669 [Worker-137: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-01 11:12:19,669 [Worker-137: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\kaue.plfreire\Desktop\Estudo-Java-POO\projetopoo\src\main\resources
+2024-11-01 11:12:19,669 [Worker-137: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-01 11:12:19,670 [Worker-137: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\kaue.plfreire\Desktop\Estudo-Java-POO\projetopoo\src\test\resources
