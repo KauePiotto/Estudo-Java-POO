@@ -19,7 +19,6 @@ INDEX VERSION 1.134+C:\Users\kaue.plfreire\Desktop\Estudo-Java-POO\.metadata\.pl
 3717021853.index
 4224269109.index
 3524050332.index
-1267035450.index
 2252101202.index
 233565742.index
 2443764395.index
