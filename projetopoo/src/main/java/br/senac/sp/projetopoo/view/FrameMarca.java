@@ -1,9 +1,13 @@
 package br.senac.sp.projetopoo.view;
 
 import java.awt.EventQueue;
+import java.awt.ScrollPane;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import br.senac.sp.projetopoo.dao.ConectionFactory;
 import br.senac.sp.projetopoo.dao.MarcaDao;
 import br.senac.sp.projetopoo.modelo.Marca;
@@ -11,8 +15,13 @@ import br.senac.sp.projetopoo.tablemodel.MarcaTableModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageFilter;
+import java.io.File;
+import java.io.FileFilter;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
@@ -28,11 +37,12 @@ public class FrameMarca extends JFrame {
 	private JTable tblMarca;
 	private Marca marca;
 	private MarcaDao dao;
+	private JFileChooser chooser;
+	private FileFilter iamgeFilter;
+	private File selecionado;
 	private List<Marca> marcas;
 	private MarcaTableModel tableModel;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,9 +57,6 @@ public class FrameMarca extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public FrameMarca() {
 		dao = new MarcaDao(ConectionFactory.getConexao());
 		
@@ -57,7 +64,12 @@ public class FrameMarca extends JFrame {
 			marcas = dao.listar();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(FrameMarca.this, "Erro"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
 		}
+		tableModel = new MarcaTableModel(marcas);
+		
+		chooser = new JFileChooser();
+		//iamgeFilter = new FileNameExtensionFilter("Imagens", ImageIO.getReaderFileSuffixes());
 		
 		setTitle("Cadastro Marca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,7 +110,7 @@ public class FrameMarca extends JFrame {
 		contentPane.add(lblLogo);
 
 		// Tabela das Marcas
-		tblMarca = new JTable();
+		tblMarca = new JTable(tableModel);
 		tblMarca.setBounds(10, 142, 414, 168);
 		contentPane.add(tblMarca);
 
@@ -138,5 +150,12 @@ public class FrameMarca extends JFrame {
 		});
 		btnLimpa.setBounds(301, 97, 123, 34);
 		contentPane.add(btnLimpa);
+	}
+	
+	private void limpar() {
+		tfid.setText("");
+		tfNome.setText("");
+		marca = null;
+		tfNome.resquestFocus();
 	}
 }
