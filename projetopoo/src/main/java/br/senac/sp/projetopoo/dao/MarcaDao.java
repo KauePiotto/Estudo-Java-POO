@@ -31,7 +31,7 @@ public class MarcaDao {
 		sql = "select * from marca";
 		stmt = conexao.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
-		while(rs.next()) {
+		while (rs.next()) {
 			Marca m = new Marca();
 			m.setId(rs.getInt("id"));
 			m.setNome(rs.getString("Nome"));
@@ -39,7 +39,25 @@ public class MarcaDao {
 		}
 		rs.close();
 		stmt.close();
-		
+
 		return lista;
+	}
+
+	public void Alterar(Marca marca) throws SQLException {
+		sql = "update marca set nome = ?, logo = ? where id = ?";
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, marca.getNome());
+		stmt.setBytes(2, marca.getLogo());
+		stmt.setInt(3, marca.getId());
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public void Excluir(int id) throws SQLException {
+		sql = "delete from marca where id = ?";
+		stmt = conexao.prepareStatement(sql);
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
 	}
 }

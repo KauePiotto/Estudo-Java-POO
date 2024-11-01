@@ -40,7 +40,6 @@ public class MarcaTableModel extends AbstractTableModel {
 	}
 
 	public String getColumnName(int Column) {
-		return cabecalho[Column];
-		
+		return cabecalho[Column];	
 	}
 }
