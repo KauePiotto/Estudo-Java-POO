@@ -5,12 +5,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import br.senac.sp.projetopoo.dao.ConectionFactory;
+import br.senac.sp.projetopoo.dao.MarcaDao;
 import br.senac.sp.projetopoo.modelo.Marca;
+import br.senac.sp.projetopoo.tablemodel.MarcaTableModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Color;
@@ -24,7 +27,9 @@ public class FrameMarca extends JFrame {
 	private JTextField txtNome;
 	private JTable tblMarca;
 	private Marca marca;
-
+	private MarcaDao dao;
+	private List<Marca> marcas;
+	private MarcaTableModel tableModel;
 	/**
 	 * Launch the application.
 	 */
@@ -46,9 +51,17 @@ public class FrameMarca extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameMarca() {
+		dao = new MarcaDao(ConectionFactory.getConexao());
+		
+		try {
+			marcas = dao.listar();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(FrameMarca.this, "Erro"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+		
 		setTitle("Cadastro Marca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 360);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -86,7 +99,7 @@ public class FrameMarca extends JFrame {
 
 		// Tabela das Marcas
 		tblMarca = new JTable();
-		tblMarca.setBounds(10, 142, 414, 108);
+		tblMarca.setBounds(10, 142, 414, 168);
 		contentPane.add(tblMarca);
 
 		// Botao Excluir
