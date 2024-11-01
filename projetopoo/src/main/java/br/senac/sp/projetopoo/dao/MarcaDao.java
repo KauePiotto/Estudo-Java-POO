@@ -36,10 +36,10 @@ public class MarcaDao {
 			m.setId(rs.getInt("id"));
 			m.setNome(rs.getString("Nome"));
 			m.setLogo(rs.getBytes("logo"));
+			lista.add(m);
 		}
 		rs.close();
 		stmt.close();
-
 		return lista;
 	}
 

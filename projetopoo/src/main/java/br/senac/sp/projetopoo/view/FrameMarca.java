@@ -80,7 +80,7 @@ public class FrameMarca extends JFrame {
 
 		setTitle("Cadastro Marca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 399);
+		setBounds(100, 100, 450, 459);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -137,6 +137,10 @@ public class FrameMarca extends JFrame {
 		lblLogo.setOpaque(true);
 		contentPane.add(lblLogo);
 
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 142, 414, 262);
+		contentPane.add(scrollPane);
+
 		// Tabela das Marcas
 		tblMarca = new JTable(tableModel);
 		tblMarca.setToolTipText("Selecione um item para alterar ou excluir");
@@ -152,16 +156,21 @@ public class FrameMarca extends JFrame {
 				}
 			}
 		});
+		scrollPane.setViewportView(tblMarca);
 
-		tblMarca.setBounds(10, 142, 414, 207);
-		contentPane.add(tblMarca);
-
-		// Botao Excluir
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setMnemonic('e');
-		btnExcluir.setBounds(151, 97, 140, 34);
-		contentPane.add(btnExcluir);
-
+       
+	
+		// Botao Limpar
+		JButton btnLimpa = new JButton("Limpar");
+		btnLimpa.setMnemonic('l');
+		btnLimpa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpar();
+			}
+		});
+		btnLimpa.setBounds(301, 97, 123, 34);
+		contentPane.add(btnLimpa);
+		
 		// Botao Salvar
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
@@ -200,17 +209,30 @@ public class FrameMarca extends JFrame {
 		btnSalvar.setMnemonic('s');
 		btnSalvar.setBounds(10, 97, 131, 34);
 		contentPane.add(btnSalvar);
-
-		// Botao Limpar
-		JButton btnLimpa = new JButton("Limpar");
-		btnLimpa.setMnemonic('l');
-		btnLimpa.addActionListener(new ActionListener() {
+		
+		// Botao Excluir
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				limpar();
+				if(marcas != null) {
+					if(JOptionPane.showConfirmDialog(FrameMarca.this, "Deseja excluir a marca"+ marca.getNome()) == JOptionPane.YES_NO_OPTION){
+						try {
+							dao.Excluir(marca.getId());
+							marcas = dao.listar();
+							tableModel.setLista(marcas);
+							tableModel.fireTableDataChanged();
+							limpar();
+						}catch(SQLException e2) {
+							e2.printStackTrace();
+						}
+					}
+				}else {
+					JOptionPane.showMessageDialog(FrameMarca.this, "Selecione uma marca para excluir-la");
+				}
 			}
 		});
-		btnLimpa.setBounds(301, 97, 123, 34);
-		contentPane.add(btnLimpa);
+		btnExcluir.setBounds(151, 97, 140, 34);
+		contentPane.add(btnExcluir);
 	}
 
 	private void limpar() {
