@@ -1,45 +1,39 @@
 package br.senac.sp.projetopoo.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
-import java.awt.ScrollPane;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.AbstractDocument.Content;
-
-import br.senac.sp.projetopoo.dao.ConectionFactory;
-import br.senac.sp.projetopoo.dao.MarcaDao;
-import br.senac.sp.projetopoo.modelo.Marca;
-import br.senac.sp.projetopoo.tablemodel.MarcaTableModel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageFilter;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.List;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import javax.swing.ListSelectionModel;
-
-import java.awt.Color;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import br.senac.sp.projetopoo.dao.ConectionFactory;
+import br.senac.sp.projetopoo.dao.MarcaDao;
+import br.senac.sp.projetopoo.modelo.Marca;
+import br.senac.sp.projetopoo.tablemodel.MarcaTableModel;
 
 public class FrameMarca extends JFrame {
 
@@ -52,7 +46,7 @@ public class FrameMarca extends JFrame {
 	private Marca marca;
 	private MarcaDao dao;
 	private JFileChooser chooser;
-	private javax.swing.filechooser.FileFilter imageFilter;
+	private FileFilter imageFilter;
 	private File selecionado;
 	private List<Marca> marcas;
 	private MarcaTableModel tableModel;
@@ -86,7 +80,7 @@ public class FrameMarca extends JFrame {
 
 		setTitle("Cadastro Marca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 360);
+		setBounds(100, 100, 450, 399);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -117,17 +111,18 @@ public class FrameMarca extends JFrame {
 		txtNome.setColumns(10);
 
 		// Label da Logo
-	    lblLogo = new JLabel("");
+		lblLogo = new JLabel("");
 		lblLogo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount() == 2) {
+				if (e.getClickCount() == 2) {
 					chooser.setFileFilter(imageFilter);
-					if(chooser.showOpenDialog(FrameMarca.this)) == JFileChooser.APPROVE_OPTION{
+					if (chooser.showOpenDialog(FrameMarca.this) == JFileChooser.APPROVE_OPTION) {
 						selecionado = chooser.getSelectedFile();
 						try {
 							BufferedImage bufImg = ImageIO.read(selecionado);
-							Image imagem = bufImg.getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+							Image imagem = bufImg.getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(),
+									Image.SCALE_SMOOTH);
 							ImageIcon imgLabel = new ImageIcon(imagem);
 							lblLogo.setIcon(imgLabel);
 						} catch (Exception e1) {
@@ -142,10 +137,6 @@ public class FrameMarca extends JFrame {
 		lblLogo.setOpaque(true);
 		contentPane.add(lblLogo);
 
-		JScrollPane scrollPane = new JScrollPane(); 
-		scrollPane.setBounds(33, 171, 364, 233);
-		contentPane.add(scrollPane);
-		
 		// Tabela das Marcas
 		tblMarca = new JTable(tableModel);
 		tblMarca.setToolTipText("Selecione um item para alterar ou excluir");
@@ -162,7 +153,7 @@ public class FrameMarca extends JFrame {
 			}
 		});
 
-		tblMarca.setBounds(10, 142, 414, 168);
+		tblMarca.setBounds(10, 142, 414, 207);
 		contentPane.add(tblMarca);
 
 		// Botao Excluir
@@ -180,20 +171,27 @@ public class FrameMarca extends JFrame {
 							JOptionPane.INFORMATION_MESSAGE);
 					txtNome.requestFocus();
 				} else {
-					marca = new Marca();
+					if (marca == null) {
+						marca = new Marca();
+					}
 					marca.setNome(txtNome.getText().trim());
 					try {
 						if (selecionado != null) {
 							byte[] imagemBytes = Files.readAllBytes(selecionado.toPath());
 							marca.setLogo(imagemBytes);
 						}
-						dao.inserir(marca);
+						if (marca.getId() == 0) {
+							dao.inserir(marca);
+						} else {
+							dao.Alterar(marca);
+						}
+						marcas = dao.listar();
+						tableModel.setLista(marcas);
+						tableModel.fireTableDataChanged();
 						limpar();
-					} catch (SQLException e1) {
+					} catch (SQLException | IOException e1) {
 						JOptionPane.showMessageDialog(FrameMarca.this, e1.getMessage(), "ERRO:",
 								JOptionPane.ERROR_MESSAGE);
-						e1.printStackTrace();
-					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 				}
