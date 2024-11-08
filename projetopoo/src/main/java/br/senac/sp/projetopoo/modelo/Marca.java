@@ -13,6 +13,7 @@ public class Marca {
 	private int id;
 	@Column (name ="nome", columnDefinition = "varchar(100", nullable = false)
 	private String nome;
+	@Column(columnDefinition = "mediumlob")
 	private byte[] logo;
 	public int getId() {
 		return id;
