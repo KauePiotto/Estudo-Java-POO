@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import br.senac.sp.projetopoo.modelo.Marca;
 
 public class MarcaDao {
@@ -52,7 +53,7 @@ public class MarcaDao {
 		stmt.execute();
 		stmt.close();
 	}
-	
+
 	public void Excluir(int id) throws SQLException {
 		sql = "delete from marca where id = ?";
 		stmt = conexao.prepareStatement(sql);

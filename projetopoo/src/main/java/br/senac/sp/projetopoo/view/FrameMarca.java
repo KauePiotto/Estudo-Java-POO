@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.List;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +29,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import br.senac.sp.projetopoo.dao.ConectionFactory;
 import br.senac.sp.projetopoo.dao.MarcaDao;
 import br.senac.sp.projetopoo.modelo.Marca;
@@ -158,8 +160,6 @@ public class FrameMarca extends JFrame {
 		});
 		scrollPane.setViewportView(tblMarca);
 
-       
-	
 		// Botao Limpar
 		JButton btnLimpa = new JButton("Limpar");
 		btnLimpa.setMnemonic('l');
@@ -170,7 +170,7 @@ public class FrameMarca extends JFrame {
 		});
 		btnLimpa.setBounds(301, 97, 123, 34);
 		contentPane.add(btnLimpa);
-		
+
 		// Botao Salvar
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
@@ -209,24 +209,25 @@ public class FrameMarca extends JFrame {
 		btnSalvar.setMnemonic('s');
 		btnSalvar.setBounds(10, 97, 131, 34);
 		contentPane.add(btnSalvar);
-		
+
 		// Botao Excluir
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.addActionListener(new ActionListener(){
+		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(marcas != null) {
-					if(JOptionPane.showConfirmDialog(FrameMarca.this, "Deseja excluir a marca"+ marca.getNome()) == JOptionPane.YES_NO_OPTION){
+				if (marcas != null) {
+					if (JOptionPane.showConfirmDialog(FrameMarca.this,
+							"Deseja excluir a marca" + marca.getNome()) == JOptionPane.YES_NO_OPTION) {
 						try {
 							dao.Excluir(marca.getId());
 							marcas = dao.listar();
 							tableModel.setLista(marcas);
 							tableModel.fireTableDataChanged();
 							limpar();
-						}catch(SQLException e2) {
+						} catch (SQLException e2) {
 							e2.printStackTrace();
 						}
 					}
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(FrameMarca.this, "Selecione uma marca para excluir-la");
 				}
 			}

@@ -1,7 +1,9 @@
 package br.senac.sp.projetopoo.tablemodel;
 
 import java.util.List;
+
 import javax.swing.table.AbstractTableModel;
+
 import br.senac.sp.projetopoo.modelo.Marca;
 
 public class MarcaTableModel extends AbstractTableModel {
@@ -40,6 +42,6 @@ public class MarcaTableModel extends AbstractTableModel {
 	}
 
 	public String getColumnName(int Column) {
-		return cabecalho[Column];	
+		return cabecalho[Column];
 	}
 }

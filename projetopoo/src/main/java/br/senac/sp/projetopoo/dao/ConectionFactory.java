@@ -9,7 +9,7 @@ public class ConectionFactory {
 	public static Connection getConexao() {
 		if (conexao == null) {
 			try {
-				conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetopoo","root", "");
+				conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetopoo", "root", "");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
