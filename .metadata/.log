@@ -4402,3 +4402,9 @@ Contains: Missing mysql:mysql-connector-java:jar:javadoc:5.1.49
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-08 08:48:42.806
 !MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-08 08:52:50.383
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-08 08:52:50.386
+!MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
