@@ -7,3 +7,13 @@ create table if not exists marca (
     nome varchar(100) not null,
     logo mediumblob
     );
+    
+    create table if not exists produto(
+    id integer primary key auto_increment,
+    foto mediumblob,
+    nome varchar(100) not null,
+    marca varchar(100) not null,
+    preco double not null
+    );
+    
+    select * from marca;
